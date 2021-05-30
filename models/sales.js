@@ -1,16 +1,18 @@
 const mongoose = require('mongoose')
 
 const salesSchema = new mongoose.Schema({
-  slug: { type: String, required: true, unique: true },
-//   id: { type: String, required: true },
-  customerID: { type: String, required: true },
-  productID: { type: String, required: true },
-  price: { type: Number, required: true },
-  totalAmount: { type: Number, required: true },
-})
-
-const SalesModel = mongoose.model('Sales', salesSchema)
-
-module.exports = {
+    slug: { type: String, required: true, unique: true },
+  //   id: { type: String, required: true },
+    salesOrderNumber: { type: Number, required: true },
+    customerId: { type: String, required: true },
+    productId: { type: String, required: true },
+    productQuantity: { type: Number, required: true },
+    productPrice: { type: Number, required: true },
+    totalPrice: { type: Number, required: true },
+  })
+  
+  const SalesModel = mongoose.model('Sales', salesSchema)
+  
+  module.exports = {
     SalesModel: SalesModel
-}
+  }

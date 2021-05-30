@@ -1,17 +1,18 @@
-
 require('dotenv').config()
 const mongoose = require('mongoose')
 const _ = require('lodash')
-const { UserModel } = require('./models/users')
+const { SalesModel } = require('./models/sales')
 
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 
-let userData = [
-  { name: 'adminAccount1', password: 'adminAccount1' },
+let salesData = [
+  { salesOrderNumber: 1, customerId: 'customerID-1', productId: 'productID-1', productQuantity: 1, productPrice: 10, totalPrice: 10},
+  { salesOrderNumber: 2, customerId: 'customerID-2', productId: 'productID-2', productQuantity: 2, productPrice: 15, totalPrice: 30},
+  { salesOrderNumber: 3, customerId: 'customerID-3', productId: 'productID-3', productQuantity: 3, productPrice: 20, totalPrice: 60},
 ]
 
-userData = userData.map(item => {
-    item.slug = _.kebabCase(item.name)
+salesData = salesData.map(item => {
+    item.slug = _.kebabCase(item.salesOrderNumber)
     return item
 })
 
@@ -20,7 +21,7 @@ let connection = null
 mongoose.connect( mongoURI, { useNewUrlParser: true, useUnifiedTopology: true } )
   .then(connResp => {
     connection = connResp
-    return UserModel.insertMany(userData)
+    return SalesModel.insertMany(salesData)
     // ProductModel.insertMany(productData)
   })
   .then(insertResp => {

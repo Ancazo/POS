@@ -7,7 +7,9 @@ const { ProductModel } = require('./models/products')
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 
 let productData = [
-  { name: 'Lithops', price: 25 },
+  { productId: 1, name: 'product1', price: 10 },
+  { productId: 2, name: 'product2', price: 15 },
+  { productId: 3, name: 'product3', price: 20 },
 ]
 
 

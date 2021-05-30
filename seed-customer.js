@@ -7,7 +7,9 @@ const { CustomerModel } = require('./models/customers')
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 
 let customerData = [
-  { name: 'Simon', contact: '98157544' },
+  { customerId: 1, name: 'customer1', contact: '11111111' },
+  { customerId: 2, name: 'customer2', contact: '22222222' },
+  { customerId: 3, name: 'customer3', contact: '33333333' },
 ]
 
 
