@@ -9,7 +9,7 @@ const salesSchema = new mongoose.Schema({
     productQuantity: { type: Number, required: true },
     productPrice: { type: Number, required: true },
     totalPrice: { type: Number, required: true },
-  })
+  }, {timestamps: true});
   
   const SalesModel = mongoose.model('Sales', salesSchema)
   
