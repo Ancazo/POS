@@ -36,6 +36,18 @@
                 <th><%= sales.updatedAt.toDateString() %></th>
             </tr>
         </table>
+
+        <form action="/sales/history">
+            <button type="submit">Back</button>
+         </form>
+        <form action="/sales/history/<%= sales.slug %>/edit">
+            <button type="submit">Edit</button>
+         </form>
+
+         <form method="post" action="/sales/history/<%= sales.slug %>?_method=DELETE">
+            <button type="submit" >Delete</a>
+        </form>
+
     </div>
 </body>
 </html>

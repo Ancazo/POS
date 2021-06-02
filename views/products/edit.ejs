@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Raccoon POS</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form form method="POST" action="/sales/history/<%= sales.slug %>?_method=PATCH">
+            <label for="fname">Sales Order ID:</label><br>
+            <input type="text" id="salesOrderId" name="salesOrderId" value="<%= sales.salesOrderNumber %>"><br>
+            <label for="fname">Customer ID:</label><br>
+            <input type="text" id="customerId" name="customerId" value="<%= sales.customerId %>"><br>
+            <label for="lname">Product ID:</label><br>
+            <input type="text" id="productId" name="productId" value="<%= sales.productId %>"><br>
+            <label for="fname">Quantity:</label><br>
+            <input type="text" id="productQuantity" name="productQuantity" value="<%= sales.productQuantity %>"><br>
+            <label for="lname">Unit Price:</label><br>
+            <input type="text" id="productPrice" name="productPrice" value="<%= sales.productPrice %>"><br>
+            <label for="lname">Total Price:</label><br>
+            <input type="text" id="totalPrice" name="totalPrice" value="<%= sales.totalPrice %>"> <br><br>
+            <input type="submit" value="Update">
+          </form> 
+    </div>
+</body>
+</html> 

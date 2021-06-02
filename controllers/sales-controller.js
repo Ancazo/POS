@@ -60,14 +60,51 @@ module.exports = {
     },
 
     editSales: (req, res) => {
-        
+        SalesModel.findOne({ slug: req.params.slug })
+        .then(item => {
+            res.render('products/edit', {
+                sales: item,
+            })
+        })
+        .catch(err => {
+            res.redirect('/sales/history')
+        })
     },
 
     updateSales: (req, res) => {
-        
+        let newSlug = _.kebabCase(req.body.salesOrderId)
+
+        SalesModel.updateOne(
+            { slug: req.params.slug },
+            {
+                $set: {
+                    salesOrderNumber: req.body.salesOrderId,
+                    customerId: req.body.customerId,
+                    productId: req.body.productId,
+                    productQuantity: req.body.productQuantity,
+                    productPrice: req.body.productPrice,
+                    totalPrice: req.body.totalPrice,
+                    slug: newSlug
+                }
+            }
+        )
+            .then(updateResp => {
+                res.redirect('/sales/history/' + newSlug)
+            })
+            .catch(err => {
+                res.redirect('/sales/history/')
+            })
     },
 
     deleteSales: (req, res) => {
-        
+        SalesModel.deleteOne( { slug: req.params.slug } )
+        .then(deleteResp => {
+            res.redirect('/sales/history/')
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect('/sales/history/')
+        })
     },
+
 }

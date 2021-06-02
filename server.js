@@ -53,13 +53,13 @@ app.get('/sales/history/:slug', salesController.show)
 app.post('/sales/history', salesController.createSales)
 
 // edit
-// app.get('/products/:slug/edit', salesController.editForm)
+app.get('/sales/history/:slug/edit', salesController.editSales)
 
 // update
-// app.patch('/products/:slug', salesController.update)
+app.patch('/sales/history/:slug', salesController.updateSales)
 
 // delete
-// app.delete('/products/:slug', salesController.delete)
+app.delete('/sales/history/:slug', salesController.deleteSales)
 
 // product rating routes
 
