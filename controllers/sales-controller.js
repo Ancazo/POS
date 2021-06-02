@@ -30,16 +30,33 @@ module.exports = {
                 })
             })
             .catch(err => {
-                res.redirect('history/sales-history')
+                res.redirect('products/new')
             })
         },
 
     newSalesForm: (req, res) => {
-        
+        res.render('products/new')
     },
 
     createSales: (req, res) => {
-        
+        let slug = _.kebabCase(req.body.salesOrderId)
+
+        SalesModel.create({
+            salesOrderNumber: req.body.salesOrderId,
+            customerId: req.body.customerId,
+            productId: req.body.productId,
+            productQuantity: req.body.productQuantity,
+            productPrice: req.body.productPrice,
+            totalPrice: req.body.totalPrice,
+            slug: slug
+        })
+            .then(createResp => {
+                res.redirect('/sales/history')
+            })
+            .catch(err => {
+                console.log(err)
+                res.redirect('/sales/history')
+            })
     },
 
     editSales: (req, res) => {

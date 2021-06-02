@@ -44,13 +44,13 @@ app.use(methodOverride('_method'))
 app.get('/sales/history', salesController.index)
 
 // new
-// app.get('/products/new', salesController.newForm)
+app.get('/sales/new', salesController.newSalesForm)
 
 // show
 app.get('/sales/history/:slug', salesController.show)
 
 // create
-// app.post('/products', salesController.create)
+app.post('/sales/history', salesController.createSales)
 
 // edit
 // app.get('/products/:slug/edit', salesController.editForm)
