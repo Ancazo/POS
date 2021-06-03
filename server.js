@@ -40,6 +40,9 @@ app.use(methodOverride('_method'))
 //              ROUTES
 // =======================================
 
+// main menu
+app.get('/sales', salesController.main)
+
 // index
 app.get('/sales/history', salesController.index)
 
