@@ -4,7 +4,6 @@
 
 <head>
 
-    <link rel="stylesheet" href="style.css">
 
     <title>Raccoon POS</title>
 
@@ -23,7 +22,6 @@
                 <th>Total Price</th>
                 <th>Created On</th>
                 <th>Updated On</th>
-
             </tr>
             <tr>
                 <th><%= sales._id %></th>
@@ -40,11 +38,11 @@
         <form action="/sales/history">
             <button type="submit">Back</button>
          </form>
-        <form action="/sales/history/<%= sales.slug %>/edit">
+        <form action="/sales/history/<%= sales._id %>/edit">
             <button type="submit">Edit</button>
          </form>
 
-         <form method="post" action="/sales/history/<%= sales.slug %>?_method=DELETE">
+         <form method="post" action="/sales/history/<%= sales._id %>?_method=DELETE">
             <button type="submit" >Delete</a>
         </form>
 

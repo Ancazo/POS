@@ -23,15 +23,14 @@ module.exports = {
     show: (req, res) => {
         let sales = {}
 
-        SalesModel.findOne()
+        SalesModel.findById(req.params._id) // almost same as findOne({_id:id})
             .then(item => {
-                console.log(req.params.slug)
                 res.render('sales/show', {
                     sales: item,
                 })
             })
             .catch(err => {
-                res.redirect('sales/new')
+                res.redirect('/sales')
             })
         },
 
@@ -60,7 +59,7 @@ module.exports = {
     },
 
     editSales: (req, res) => {
-        SalesModel.findOne({ slug: req.params.slug })
+        SalesModel.findById(req.params._id)
         .then(item => {
             res.render('sales/edit', {
                 sales: item,
@@ -72,24 +71,22 @@ module.exports = {
     },
 
     updateSales: (req, res) => {
-        let newSlug = _.kebabCase(req.body.salesOrderId)
 
         SalesModel.updateOne(
-            { slug: req.params.slug },
+            { _id: req.params._id },
             {
+                
                 $set: {
-                    salesOrderNumber: req.body.salesOrderId,
                     customerId: req.body.customerId,
                     productId: req.body.productId,
                     productQuantity: req.body.productQuantity,
                     productPrice: req.body.productPrice,
                     totalPrice: req.body.totalPrice,
-                    slug: newSlug
                 }
             }
         )
             .then(updateResp => {
-                res.redirect('/sales/history/' + newSlug)
+                res.redirect('/sales/history/')
             })
             .catch(err => {
                 res.redirect('/sales/history/')
@@ -97,7 +94,7 @@ module.exports = {
     },
 
     deleteSales: (req, res) => {
-        SalesModel.deleteOne( { slug: req.params.slug } )
+        SalesModel.deleteOne( { _id: req.params._id } )
         .then(deleteResp => {
             res.redirect('/sales/history/')
         })

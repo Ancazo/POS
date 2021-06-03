@@ -43,6 +43,7 @@ app.use(methodOverride('_method'))
 // main menu
 app.get('/sales', salesController.main)
 
+// sales routes
 // index
 app.get('/sales/history', salesController.index)
 
@@ -50,20 +51,42 @@ app.get('/sales/history', salesController.index)
 app.get('/sales/new', salesController.newSalesForm)
 
 // show
-app.get('/sales/history/:slug', salesController.show)
+app.get('/sales/history/:_id', salesController.show)
 
 // create
 app.post('/sales/history', salesController.createSales)
 
 // edit
-app.get('/sales/history/:slug/edit', salesController.editSales)
+app.get('/sales/history/:_id/edit', salesController.editSales)
 
 // update
-app.patch('/sales/history/:slug', salesController.updateSales)
+app.patch('/sales/history/:_id', salesController.updateSales)
 
 // delete
-app.delete('/sales/history/:slug', salesController.deleteSales)
+app.delete('/sales/history/:_id', salesController.deleteSales)
 
+
+// product routes
+// index
+// app.get('/sales/history', salesController.index)
+
+// new
+// app.get('/sales/new', salesController.newSalesForm)
+
+// show
+// app.get('/sales/history/:slug', salesController.show)
+
+// create
+// app.post('/sales/history', salesController.createSales)
+
+// edit
+// app.get('/sales/history/:slug/edit', salesController.editSales)
+
+// update
+// app.patch('/sales/history/:slug', salesController.updateSales)
+
+// delete
+// app.delete('/sales/history/:slug', salesController.deleteSales)
 // product rating routes
 
 // app.get('/products/:slug/ratings/new', productRatingController.newForm)
