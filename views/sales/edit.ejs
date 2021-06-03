@@ -14,8 +14,6 @@
 
     <div class="container">
         <form form method="POST" action="/sales/history/<%= sales.slug %>?_method=PATCH">
-            <label for="fname">Sales Order ID:</label><br>
-            <input type="text" id="salesOrderId" name="salesOrderId" value="<%= sales.salesOrderNumber %>"><br>
             <label for="fname">Customer ID:</label><br>
             <input type="text" id="customerId" name="customerId" value="<%= sales.customerId %>"><br>
             <label for="lname">Product ID:</label><br>

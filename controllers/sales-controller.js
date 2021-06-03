@@ -1,6 +1,7 @@
 const _ = require('lodash')
 const {SalesModel} = require('../models/sales')
 const {CustomerModel} = require('../models/customers')
+const {ProductModel} = require('../models/products')
 
 
 module.exports = {
@@ -22,33 +23,32 @@ module.exports = {
     show: (req, res) => {
         let sales = {}
 
-        SalesModel.findOne({ slug: req.params.slug })
+        SalesModel.findOne()
             .then(item => {
                 console.log(req.params.slug)
-                res.render('products/show', {
+                res.render('sales/show', {
                     sales: item,
                 })
             })
             .catch(err => {
-                res.redirect('products/new')
+                res.redirect('sales/new')
             })
         },
 
-    newSalesForm: (req, res) => {
-        res.render('products/new')
+    newSalesForm: async (req, res) => {
+        const customers = await CustomerModel.find()
+        const products = await ProductModel.find()
+        res.render('sales/new', {customers, products})
     },
 
     createSales: (req, res) => {
-        let slug = _.kebabCase(req.body.salesOrderId)
-
+        console.log(req.body)
         SalesModel.create({
-            salesOrderNumber: req.body.salesOrderId,
             customerId: req.body.customerId,
             productId: req.body.productId,
             productQuantity: req.body.productQuantity,
             productPrice: req.body.productPrice,
             totalPrice: req.body.totalPrice,
-            slug: slug
         })
             .then(createResp => {
                 res.redirect('/sales/history')
@@ -62,7 +62,7 @@ module.exports = {
     editSales: (req, res) => {
         SalesModel.findOne({ slug: req.params.slug })
         .then(item => {
-            res.render('products/edit', {
+            res.render('sales/edit', {
                 sales: item,
             })
         })

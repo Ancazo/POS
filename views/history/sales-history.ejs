@@ -16,19 +16,14 @@
         <table>
             <tr>
                 <th>Sales Order ID</th>
-                <th>Customer ID</th>
                 <th>Total Price</th>
                 <th>Created On</th>
                 <th>Updated On</th>
-
             </tr>
             <tr>
                 <% if (sales.length !== 0) { %> 
                     <% sales.forEach((element) => { %>
-
-                <th><a href="/sales/history/<%= element.slug %> "> <%= element.salesOrderNumber %></a></th>
-                <th><%= element.customerId %></th>
-
+                <th><a href="/sales/history/<%= element._id %> "> <%= element._id %></a></th>
                 <th><%= element.totalPrice %></th>
                 <th><%= element.createdAt.toDateString() %></th>
                 <th><%= element.updatedAt.toDateString() %></th>

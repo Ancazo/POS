@@ -6,9 +6,9 @@ const { SalesModel } = require('./models/sales')
 const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`
 
 let salesData = [
-  { salesOrderNumber: 1, customerId: 'customerID-1', productId: 'productID-1', productQuantity: 1, productPrice: 10, totalPrice: 10},
-  { salesOrderNumber: 2, customerId: 'customerID-2', productId: 'productID-2', productQuantity: 2, productPrice: 15, totalPrice: 30},
-  { salesOrderNumber: 3, customerId: 'customerID-3', productId: 'productID-3', productQuantity: 3, productPrice: 20, totalPrice: 60},
+  { customerId: 'customerID-1', productId: 'productID-1', productQuantity: 1, productPrice: 10, totalPrice: 10},
+  { customerId: 'customerID-2', productId: 'productID-2', productQuantity: 2, productPrice: 15, totalPrice: 30},
+  { customerId: 'customerID-3', productId: 'productID-3', productQuantity: 3, productPrice: 20, totalPrice: 60},
 ]
 
 salesData = salesData.map(item => {

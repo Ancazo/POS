@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Raccoon POS</title>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form form method="POST" action="/sales/history">
+            <label for="fname">Customer Name:</label><br>
+            <!-- <input type="text" id="customerId" name="customerId" placeholder="Customer ID"><br> -->
+            <select name="customerId" >
+               <%  for (const customer of customers) { %>
+                <option value="<%= customer._id %>">
+                    <%= customer.name %>
+                </option>
+
+                <% } %> 
+            </select><br>
+            <label for="lname">Product Name:</label><br>
+            <!-- <input type="text" id="productId" name="productId" placeholder="Product ID"><br> -->
+            <select name="productId" >
+                <%  for (const product of products) { %>
+                 <option value="<%= product._id %>">
+                     <%= product.name %>
+                 </option>
+ 
+                 <% } %> 
+             </select><br>
+            <label for="fname">Quantity:</label><br>
+            <input type="text" id="productQuantity" name="productQuantity" placeholder="Quantity"><br>
+            <label for="lname">Unit Price:</label><br>
+            <input type="text" id="productPrice" name="productPrice" placeholder="Produ Price"><br>
+            <label for="lname">Total Price:</label><br>
+            <input type="text" id="totalPrice" name="totalPrice" placeholder="Total Price"><br><br>
+            <input type="submit" value="Submit">
+          </form> 
+    </div>
+</body>
+</html>
