@@ -20,8 +20,9 @@ module.exports = {
         })
     },
 
-    show: (req, res) => {
+    show:  (req, res) => {
         let sales = {}
+
 
         SalesModel.findById(req.params._id) // almost same as findOne({_id:id})
             .then(item => {
@@ -37,7 +38,10 @@ module.exports = {
     newSalesForm: async (req, res) => {
         const customers = await CustomerModel.find()
         const products = await ProductModel.find()
-        res.render('sales/new', {customers, products})
+        res.render('sales/new', {
+            customers, 
+            products
+        })
     },
 
     createSales: (req, res) => {
@@ -58,11 +62,15 @@ module.exports = {
             })
     },
 
-    editSales: (req, res) => {
+    editSales: async (req, res) => {
+        const customers = await CustomerModel.find()
+        const products = await ProductModel.find()
         SalesModel.findById(req.params._id)
         .then(item => {
             res.render('sales/edit', {
                 sales: item,
+                customers,
+                products
             })
         })
         .catch(err => {

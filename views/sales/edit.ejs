@@ -1,23 +1,32 @@
-<!doctype html>
 
-<html lang="en">
+    <%- include('../partials/head') %>
 
-<head>
 
-    <link rel="stylesheet" href="style.css">
-
-    <title>Raccoon POS</title>
-
-</head>
 
 <body>
 
     <div class="container">
         <form form method="POST" action="/sales/history/<%= sales._id %>?_method=PATCH">
             <label for="fname">Customer ID:</label><br>
-            <input type="text" id="customerId" name="customerId" value="<%= sales.customerId %>"><br>
+            <!-- <input type="text" id="customerId" name="customerId" value=""><br> -->
+            <select name="customerId" >
+                <%  for (const customer of customers) { %>
+                 <option value="<%= customer._id %>">
+                     <%= customer.name %>
+                 </option>
+ 
+                 <% } %> 
+            </select><br>
             <label for="lname">Product ID:</label><br>
-            <input type="text" id="productId" name="productId" value="<%= sales.productId %>"><br>
+            <!-- <input type="text" id="productId" name="productId" value=""><br> -->
+            <select name="productId" >
+                <%  for (const product of products) { %>
+                 <option value="<%= product._id %>">
+                     <%= product.name %>
+                 </option>
+ 
+                 <% } %> 
+             </select><br>
             <label for="fname">Quantity:</label><br>
             <input type="text" id="productQuantity" name="productQuantity" value="<%= sales.productQuantity %>"><br>
             <label for="lname">Unit Price:</label><br>
