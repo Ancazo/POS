@@ -3,7 +3,7 @@
 <body>
 
     <div class="container">
-        <table>
+        <table class="table table-striped">
             <tr>
                 <th>Sales Order ID</th>
                 <th>Customer ID</th>
@@ -27,16 +27,17 @@
         </table>
 
         <form action="/sales/history">
-            <button type="submit">Back</button>
+            <button type="submit" class="btn-secondary">Back</button>
          </form>
+
         <form action="/sales/history/<%= sales._id %>/edit">
-            <button type="submit">Edit</button>
+            <button type="submit"class="btn-warning">Edit</button>
          </form>
 
          <form method="post" action="/sales/history/<%= sales._id %>?_method=DELETE">
-            <button type="submit" >Delete</a>
+            <button type="submit" class="btn-danger">Delete</a>
         </form>
 
     </div>
 </body>
-</html>
+<%- include('../partials/foot') %>

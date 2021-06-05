@@ -1,15 +1,18 @@
-
-    <%- include('../partials/head') %>
-
-
+<%- include('../partials/head') %>
 
 <body>
 
     <div class="container">
         <form form method="POST" action="/sales/history/<%= sales._id %>?_method=PATCH">
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Sales Order ID:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="productPrice" value="<%= sales._id %>" aria-label="Disabled select example" disabled>
+            </div>
+
             <label for="fname">Customer ID:</label><br>
             <!-- <input type="text" id="customerId" name="customerId" value=""><br> -->
-            <select name="customerId" >
+            <select class="form-select" name="customerId" >
                 <%  for (const customer of customers) { %>
                  <option value="<%= customer._id %>">
                      <%= customer.name %>
@@ -17,9 +20,10 @@
  
                  <% } %> 
             </select><br>
+
             <label for="lname">Product ID:</label><br>
             <!-- <input type="text" id="productId" name="productId" value=""><br> -->
-            <select name="productId" >
+            <select class="form-select" name="productId" >
                 <%  for (const product of products) { %>
                  <option value="<%= product._id %>">
                      <%= product.name %>
@@ -27,14 +31,25 @@
  
                  <% } %> 
              </select><br>
-            <label for="fname">Quantity:</label><br>
-            <input type="text" id="productQuantity" name="productQuantity" value="<%= sales.productQuantity %>"><br>
-            <label for="lname">Unit Price:</label><br>
-            <input type="text" id="productPrice" name="productPrice" value="<%= sales.productPrice %>"><br>
-            <label for="lname">Total Price:</label><br>
-            <input type="text" id="totalPrice" name="totalPrice" value="<%= sales.totalPrice %>"> <br><br>
-            <input type="submit" value="Update">
-          </form> 
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Quantity:</label>
+                <input type="text" class="form-control " id="formGroupExampleInput" name="productPrice" value="<%= sales.productQuantity %>">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Unit Price:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="productPrice" value="<%= sales.productPrice %>">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Unit Price:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="totalPrice" value="<%= sales.totalPrice %>">
+            </div>
+
+            <input type="submit" class="form-control btn-primary" value="Update">
+        </form> 
     </div>
 </body>
-</html> 
+
+<%- include('../partials/foot') %>

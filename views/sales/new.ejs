@@ -1,5 +1,5 @@
 
-        <%- include('../partials/head') %>
+<%- include('../partials/head') %>
 
 <body>
 
@@ -25,16 +25,32 @@
  
                  <% } %> 
              </select><br>
-            <label for="fname">Quantity:</label><br>
-            <input type="text" id="productQuantity" name="productQuantity" placeholder="Quantity"><br>
-            <label for="lname">Unit Price:</label><br>
-            <input type="text" id="productPrice" name="productPrice" placeholder="Produ Price"><br>
-            <label for="lname">Total Price:</label><br>
-            <input type="text" id="totalPrice" name="totalPrice" placeholder="Total Price"><br><br>
-            <input type="submit" value="Submit">
-          </form> 
-          <form method="GET" action="/sales">
-            <button type="submit" >Back</a>
+
+             <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Quantity:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="productQuantity" value="">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Quantity:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="productPrice" value="">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Quantity:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="totalPrice" value="">
+            </div>
+
+            <input type="submit" class="btn-primary" value="Submit">
+            
+         </form>  
+
+        <form method="GET" action="/sales">
+            <button class="btn-secondary" type="submit" >Back</a>
+        </form>
     </div>
+    
+    
 </body>
-</html>
+
+<%- include('../partials/foot') %>

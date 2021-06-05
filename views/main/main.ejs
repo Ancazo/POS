@@ -1,35 +1,15 @@
-<!doctype html>
-
-<html lang="en">
-
-<head>
-
-    <link rel="stylesheet" href="style.css">
-
-    <title>Raccoon POS</title>
-
-</head>
+<%- include('../partials/head') %>
 
 <body>
 
     <div class="container">
 
-
-        <form action="/sales/history">
-            <button type="submit">History</button>
-         </form>
-        <form action="/sales/new/">
-            <button type="submit">New Sales</button>
-         </form>
-
-         <form method="post" action="/sales/products">
-            <button type="submit" >Products (Not ready)</a>
-        </form>
-
-        <form method="post" action="/sales/customer">
-            <button type="submit" >Customer (Not ready)</a>
-        </form>
+        <a class="btn btn-primary" href="/sales/new" role="button">New Sales</a>
+        <a class="btn btn-primary" href="/sales/history" role="button">History</a>
+        <a class="btn btn-primary disabled" aria-disabled="true" href="/sales/products" role="button">Products (Not ready)</a>
+        <a class="btn btn-primary disabled" aria-disabled="true" href="/sales/customer" role="button">Customer (Not ready)</a>
 
     </div>
 </body>
-</html>
+
+<%- include('../partials/foot') %>
