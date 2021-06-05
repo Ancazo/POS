@@ -9,11 +9,11 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const salesController = require('./controllers/sales-controller')
 
-// const {
-//   authenticatedOnly: authenticatedOnlyMiddleware,
-//   guestOnly: guestOnlyMiddleware,
-//   setUserVarMiddleware
-// } = require('./middlewares/auth-middleware')
+const {
+  authenticatedOnly: authenticatedOnlyMiddleware,
+  guestOnly: guestOnlyMiddleware,
+  setUserVarMiddleware
+} = require('./middlewares/auth-middleware')
 
 const app = express();
 const port = 3000;
@@ -98,13 +98,13 @@ app.delete('/sales/history/:_id', salesController.deleteSales)
 
 // users
 
-// app.get('/users/register', guestOnlyMiddleware, userController.registerForm)
+app.get('/user/register', guestOnlyMiddleware, salesController.registerForm)
 
-// app.post('/users/register', guestOnlyMiddleware,  userController.registerUser)
+app.post('/user/register', guestOnlyMiddleware,  salesController.registerUser)
 
-// app.get('/users/login', guestOnlyMiddleware, userController.loginForm)
+app.get('/user/login', guestOnlyMiddleware, salesController.loginForm)
 
-// app.post('/users/login', guestOnlyMiddleware, userController.loginUser)
+app.post('/user/login', guestOnlyMiddleware, salesController.loginUser)
 
 // app.get('/users/dashboard', authenticatedOnlyMiddleware, userController.dashboard)
 
