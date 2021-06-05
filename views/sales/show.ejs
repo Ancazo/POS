@@ -27,15 +27,15 @@
         </table>
 
         <form action="/sales/history">
-            <button type="submit" class="btn-secondary">Back</button>
+            <button type="submit" class=" form-control btn-secondary mb-1">Back</button>
          </form>
 
         <form action="/sales/history/<%= sales._id %>/edit">
-            <button type="submit"class="btn-warning">Edit</button>
+            <button type="submit"class=" form-control btn-warning mb-1 ">Edit</button>
          </form>
 
          <form method="post" action="/sales/history/<%= sales._id %>?_method=DELETE">
-            <button type="submit" class="btn-danger">Delete</a>
+            <button type="submit" class=" form-control btn-danger">Delete</a>
         </form>
 
     </div>
