@@ -8,15 +8,11 @@ const { UserModel } = require('../models/users')
 module.exports = {
 
     registerForm: (req, res) => {
-
         res.render('user/register')
-
     },
 
     loginForm: (req, res) => {
-
         res.render('user/login')
-
     },
 
     registerUser: async (req, res) => {
@@ -47,12 +43,6 @@ module.exports = {
         }
 
         const timestampNow = moment().utc()
-        
-        // hashing using sha256
-        // const salt = uuidv4()
-        // const saltedPassword = salt + req.body.password
-        // const hashInstance = createHash('sha256')
-        // hashInstance.update(saltedPassword)
 
         // hashing using bcrypt
         const generatedHash = await bcrypt.hash(req.body.password, saltRounds)
@@ -93,18 +83,6 @@ module.exports = {
             res.redirect('/users/register')
             return
         }
-
-        // try to check if given password is correct
-        // const saltedPassword = user.pwsalt + req.body.password
-        // const hashInstance = createHash('sha256')
-        // hashInstance.update(saltedPassword)
-        // const hashedPassword = hashInstance.digest('hex')
-
-        // compare hashed passwords against hash in db
-        // if (hashedPassword !== user.hash) {
-        //     res.redirect('/users/register')
-        //     return
-        // }
 
         const isValidPassword = await bcrypt.compare(req.body.password, user.hash)
         console.log (isValidPassword) //check valid password

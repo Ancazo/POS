@@ -172,19 +172,14 @@ module.exports = {
             res.redirect('/user/login')
             return
         }
-        
         res.redirect('/user/login')
     },
-
-        loginForm: (req, res) => {
-
+    loginForm: (req, res) => {
         res.render('login/login')
-
     },
 
     logout: (req, res) => {
         req.session.destroy()
         res.redirect('/user/login')
     }
-
 }

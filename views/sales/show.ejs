@@ -1,7 +1,6 @@
  <%- include('../partials/head') %>
 
 <body>
-
     <div class="container">
         <table class="table table-striped">
             <tr>
@@ -25,19 +24,15 @@
                 <th><%= sales.updatedAt.toDateString() %></th>
             </tr>
         </table>
-
         <form action="/sales/history">
-            <button type="submit" class=" form-control btn-secondary mb-1">Back</button>
+            <button type="submit" class=" form-control btn-secondary mb-1 col-6">Back</button>
          </form>
-
         <form action="/sales/history/<%= sales._id %>/edit">
             <button type="submit"class=" form-control btn-warning mb-1 ">Edit</button>
          </form>
-
          <form method="post" action="/sales/history/<%= sales._id %>?_method=DELETE">
             <button type="submit" class=" form-control btn-danger">Delete</a>
         </form>
-
     </div>
 </body>
 <%- include('../partials/foot') %>

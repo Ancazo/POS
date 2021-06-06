@@ -32,6 +32,6 @@ router.patch('/history/:_id', salesController.updateSales)
 router.delete('/history/:_id', salesController.deleteSales)
 
 //logout
-router.post('/logout', salesController.logout)
+router.post('/login', salesController.logout)
 
 module.exports = router
