@@ -19,7 +19,6 @@ module.exports = {
             res.statusCode(500)
             return 'server error'
         }
-
         res.render('history/sales-history', {
             sales: sales,
         })
@@ -27,7 +26,6 @@ module.exports = {
 
     show:  (req, res) => {
         let sales = {}
-
 
         SalesModel.findById(req.params._id) // almost same as findOne({_id:id})
             .then(item => {
@@ -88,7 +86,6 @@ module.exports = {
         SalesModel.updateOne(
             { _id: req.params._id },
             {
-                
                 $set: {
                     customerId: req.body.customerId,
                     productId: req.body.productId,
@@ -103,6 +100,7 @@ module.exports = {
             })
             .catch(err => {
                 res.redirect('/sales/history/')
+                console.log(err)
             })
     },
 
@@ -120,9 +118,6 @@ module.exports = {
     main: (req, res) => {
         res.render('main/main')
     }, 
-
-
-
 
     //user
     registerForm: (req, res) => {
@@ -157,12 +152,6 @@ module.exports = {
         }
 
         const timestampNow = moment().utc()
-        
-        // hashing using sha256
-        // const salt = uuidv4()
-        // const saltedPassword = salt + req.body.password
-        // const hashInstance = createHash('sha256')
-        // hashInstance.update(saltedPassword)
 
         // hashing using bcrypt
         const generatedHash = await bcrypt.hash(req.body.password, saltRounds)
@@ -193,43 +182,9 @@ module.exports = {
 
     },
 
-    loginUser: async (req, res) => {
-        
-        let user = null
-
-        try {
-            user = await UserModel.findOne({ email: req.body.email })
-        } catch(err) {
-            console.log(err)
-            res.redirect('/user/login')
-            return
-        }
-
-        if (!user) {
-            res.redirect('/sales')
-            return
-        }
-
-        // try to check if given password is correct
-        // const saltedPassword = user.pwsalt + req.body.password
-        // const hashInstance = createHash('sha256')
-        // hashInstance.update(saltedPassword)
-        // const hashedPassword = hashInstance.digest('hex')
-
-        // compare hashed passwords against hash in db
-        // if (hashedPassword !== user.hash) {
-        //     res.redirect('/users/register')
-        //     return
-        // }
-
-        const isValidPassword = await bcrypt.compare(req.body.password, user.hash)
-        if (!isValidPassword) {
-            res.redirect('/user/login')
-            return
-        }
-
-        req.session.user = user
-        res.redirect('/sales')
-    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.redirect('/user/login')
+    }
 
 }

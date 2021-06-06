@@ -7,7 +7,7 @@ module.exports = {
             return
         }
 
-        res.redirect('/users/login')
+        res.redirect('/user/login')
     },
 
     guestOnly: (req, res, next) => {
@@ -17,7 +17,7 @@ module.exports = {
             return
         }
 
-        res.redirect('/users/dashboard')
+        res.redirect('/user/login')
     },
 
     setUserVarMiddleware: (req, res, next) => {

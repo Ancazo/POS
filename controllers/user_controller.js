@@ -9,26 +9,26 @@ module.exports = {
 
     registerForm: (req, res) => {
 
-        res.render('users/register')
+        res.render('user/register')
 
     },
 
     loginForm: (req, res) => {
 
-        res.render('users/login')
+        res.render('user/login')
 
     },
 
     registerUser: async (req, res) => {
         // validate first & last name
         if (!req.body.first_name || !req.body.last_name) {
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
 
         // ensure password and confirm password matches
         if (req.body.password !== req.body.password_confirm) {
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
 
@@ -38,11 +38,11 @@ module.exports = {
             user = await UserModel.findOne({ email: req.body.email })
         } catch (err) {
             console.log(err)
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
         if (user) {
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
 
@@ -70,7 +70,7 @@ module.exports = {
             })
         } catch(err) {
             console.log(err)
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
         
@@ -88,7 +88,7 @@ module.exports = {
             res.redirect('/users/register')
             return
         }
-
+        console.log(user)
         if (!user) {
             res.redirect('/users/register')
             return
@@ -107,17 +107,14 @@ module.exports = {
         // }
 
         const isValidPassword = await bcrypt.compare(req.body.password, user.hash)
+        console.log (isValidPassword) //check valid password
         if (!isValidPassword) {
-            res.redirect('/users/register')
+            res.redirect('/user/register')
             return
         }
 
         req.session.user = user
-        res.redirect('/users/dashboard')
-    },
-
-    dashboard: (req, res) => {
-        res.render('users/dashboard')
+        res.redirect('/sales')
     },
 
     logout: (req, res) => {
