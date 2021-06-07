@@ -1,0 +1,33 @@
+ <%- include('../partials/head') %>
+
+<body>
+    <div class="container">
+        <table class="table table-striped">
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Created On</th>
+                <th>Updated On</th>
+            </tr>
+            <tr>
+                <th><%= products._id %></th>
+                <th><%= products.name %></th>
+                <th><%= products.price %></th>
+                <th><%= products.createdAt.toDateString()  %></th>
+                <th><%= products.updatedAt.toDateString()  %></th>
+
+            </tr>
+        </table>
+        <form action="/products">
+            <button type="submit" class=" form-control btn-secondary mb-1 col-6">Back</button>
+         </form>
+        <form action="/products/<%= products._id %>/edit">
+            <button type="submit"class=" form-control btn-warning mb-1 ">Edit</button>
+         </form>
+         <form method="post" action="/products/<%= products._id %>?_method=DELETE">
+            <button type="submit" class=" form-control btn-danger">Delete</a>
+        </form>
+    </div>
+</body>
+<%- include('../partials/foot') %>

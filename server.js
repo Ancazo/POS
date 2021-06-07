@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const salesController = require('./controllers/sales-controller')
 const salesRouter = require('./routers/sales-router')
+const productsRouter = require('./routers/products-router')
 const userController = require('./controllers/user_controller')
 
 const {
@@ -46,6 +47,8 @@ app.use(session({ //setup express session as middleware. this is needed for logi
 // =======================================
 
 app.use ('/sales', salesRouter)
+
+app.use ('/products', productsRouter)
 
 // users
 
