@@ -10,6 +10,7 @@ const session = require('express-session')
 const salesController = require('./controllers/sales-controller')
 const salesRouter = require('./routers/sales-router')
 const productsRouter = require('./routers/products-router')
+// const customersRouter = require('./routers/customers-router')
 const userController = require('./controllers/user_controller')
 
 const {
@@ -40,7 +41,6 @@ app.use(session({ //setup express session as middleware. this is needed for logi
   saveUninitialized: false,
   cookie: { path: '/', secure: false, maxAge: 3600000 } // 3600000ms = 3600s = 60mins, cookie expires in an hour
 }))
-// app.use(setUserVarMiddleware)
 
 // =======================================
 //              ROUTES
@@ -49,6 +49,8 @@ app.use(session({ //setup express session as middleware. this is needed for logi
 app.use ('/sales', salesRouter)
 
 app.use ('/products', productsRouter)
+
+// app.use ('/customers', customersRouter)
 
 // users
 
@@ -62,7 +64,7 @@ app.post('/user/login', guestOnlyMiddleware, userController.loginUser)
 
 // app.get('/users/dashboard', authenticatedOnlyMiddleware, userController.dashboard)
 
-// app.post('/users/logout', authenticatedOnlyMiddleware, userController.logout)
+app.post('/user/logout', authenticatedOnlyMiddleware, userController.logout)
 
 
 // =======================================
