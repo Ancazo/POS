@@ -1,0 +1,28 @@
+<%- include('../partials/head') %>
+
+<body>
+
+    <div class="container">
+        <form form method="POST" action="/customers/<%= customers._id %>?_method=PATCH">
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label" >Customer ID:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" name="productPrice" value="<%= customers._id %>" aria-label="Disabled select example" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label"> Name:</label>
+                <input type="text" class="form-control " id="formGroupExampleInput" name="name" value="<%= customers.name %>">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Contact Number:</label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" name="contact" value="<%= customers.contact %>">
+            </div>
+
+            <input type="submit" class="form-control btn-primary" value="Update">
+        </form> 
+    </div>
+</body>
+
+<%- include('../partials/foot') %>

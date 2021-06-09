@@ -55,6 +55,7 @@ module.exports = {
             productQuantity: req.body.productQuantity,
             productPrice: req.body.productPrice,
             totalPrice: req.body.totalPrice,
+            remarks: req.body.remarks,
         })
             .then(createResp => {
                 res.redirect('/sales/history')
@@ -92,6 +93,7 @@ module.exports = {
                     productQuantity: req.body.productQuantity,
                     productPrice: req.body.productPrice,
                     totalPrice: req.body.totalPrice,
+                    remarks: req.body.remarks,
                 }
             }
         )

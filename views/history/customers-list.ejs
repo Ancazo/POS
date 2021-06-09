@@ -5,25 +5,24 @@
     <div class="container">
         <table class="table table-striped">
             <tr>
-                <th>Sales Order ID</th>
-                <th>Total Price</th>
+                <th>Customer ID</th>
+                <th>Customer Name</th>
+                <th>Customer HP</th>
                 <th>Created On</th>
                 <th>Updated On</th>
-                <th>Remarks</th>
             </tr>
             <tr>
-                <% if (sales.length !== 0) { %> 
-                    <% sales.forEach((element) => { %>
-                <th><a href="/sales/history/<%= element._id %> "> <%= element._id %></a></th>
-                <th><%= element.totalPrice %></th>
+                <% if (customers.length !== 0) { %> 
+                    <% customers.forEach((element) => { %>
+                <th><a href="/customers/<%= element._id %> "> <%= element._id %></a></th>
+                <th><%= element.name %></th>
+                <th><%= element.contact %></th>
                 <th><%= element.createdAt.toDateString() %></th>
                 <th><%= element.updatedAt.toDateString() %></th>
-                <th><%= element.remarks %></th>
-
             </tr>
             <% }); %>
             <% } else { %>
-                <p>No Sales History</p>
+                <p>No Customers List</p>
                 <% } %>
         </table>
 

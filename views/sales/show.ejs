@@ -10,8 +10,7 @@
                 <th>Quantity</th>
                 <th>Unit Price</th>
                 <th>Total Price</th>
-                <th>Created On</th>
-                <th>Updated On</th>
+                <th>Remarks</th>
             </tr>
             <tr>
                 <th><%= sales._id %></th>
@@ -20,8 +19,8 @@
                 <th><%= sales.productQuantity %></th>
                 <th><%= sales.productPrice %></th>
                 <th><%= sales.totalPrice %></th>
-                <th><%= sales.createdAt.toDateString() %></th>
-                <th><%= sales.updatedAt.toDateString() %></th>
+                <th><%= sales.remarks %></th>
+
             </tr>
         </table>
         <form action="/sales/history">

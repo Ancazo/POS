@@ -19,7 +19,7 @@ module.exports = {
             res.statusCode(500)
             return 'server error'
         }
-        res.render('history/products-history', {
+        res.render('history/products-list', {
             products: products,
         })
     },

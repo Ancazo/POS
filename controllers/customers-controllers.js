@@ -10,96 +10,95 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 module.exports = {
-    // index: async (req, res) => {
-    //     let products = []
+    index: async (req, res) => {
+        let customers = []
 
-    //     try {
-    //         products = await ProductModel.find()
-    //     } catch (err) {
-    //         res.statusCode(500)
-    //         return 'server error'
-    //     }
-    //     res.render('history/products-history', {
-    //         products: products,
-    //     })
-    // },
+        try {
+            customers = await CustomerModel.find()
+        } catch (err) {
+            res.statusCode(500)
+            return 'server error'
+        }
+        res.render('history/customers-list', {
+            customers: customers,
+        })
+    },
 
-    // show:  (req, res) => {
-    //     let products = {}
+    show:  (req, res) => {
+        let customer = {}
 
-    //     ProductModel.findById(req.params._id) // almost same as findOne({_id:id})
-    //         .then(item => {
-    //             res.render('products/show', {
-    //                 products: item,
-    //             })
-    //         })
-    //         .catch(err => {
-    //             res.redirect('/products')
-    //         })
-    //     },
+        CustomerModel.findById(req.params._id) // almost same as findOne({_id:id})
+            .then(item => {
+                res.render('customers/show', {
+                    customer: item,
+                })
+            })
+            .catch(err => {
+                res.redirect('/customers')
+            })
+        },
 
-    // newProductForm:  (req, res) => {
+    newCustomerForm:  (req, res) => {
 
-    //     res.render('products/new')
-    // },
+        res.render('customers/new')
+    },
     
-    // createProduct: (req, res) => {
-    //     console.log(req.body)
-    //     ProductModel.create({
-    //         name: req.body.name,
-    //         price: req.body.price,
-    //     })
-    //         .then(createResp => {
-    //             res.redirect('/products')
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //             res.redirect('/products')
-    //         })
-    // },
+    createCustomer: (req, res) => {
+        CustomerModel.create({
+            name: req.body.name,
+            contact: req.body.contact,
+        })
+            .then(createResp => {
+                res.redirect('/customers')
+            })
+            .catch(err => {
+                console.log(err)
+                res.redirect('/customers')
+            })
+    },
 
-    // editProduct: (req, res) => {
+    editCustomer: (req, res) => {
 
-    //     ProductModel.findById(req.params._id)
-    //     .then(item => {
-    //         res.render('products/edit', {
-    //             products: item,
+        CustomerModel.findById(req.params._id)
+        .then(item => {
+            res.render('customers/edit', {
+                customers: item,
 
-    //         })
-    //     })
-    //     .catch(err => {
-    //         res.redirect('/products')
-    //     })
-    // },
+            })
+        })
+        .catch(err => {
+            res.redirect('/customers')
+        })
+    },
 
-    // updateProduct: (req, res) => {
+    updateCustomer: (req, res) => {
 
-    //     ProductModel.updateOne(
-    //         { _id: req.params._id },
-    //         {
-    //             $set: {
-    //                 name: req.body.name,
-    //                 price: req.body.price,
-    //             }
-    //         }
-    //     )
-    //         .then(updateResp => {
-    //             res.redirect('/products/')
-    //         })
-    //         .catch(err => {
-    //             res.redirect('/products')
-    //             console.log(err)
-    //         })
-    // },
+        CustomerModel.updateOne(
+            { _id: req.params._id },
+            {
+                $set: {
+                    name: req.body.name,
+                    contact: req.body.contact,
+                }
+            }
+        )
+            .then(updateResp => {
+                res.redirect('/customers')
+            })
+            .catch(err => {
+                res.redirect('/customers')
+                console.log(err)
+            })
+    },
 
-    // deleteProduct: (req, res) => {
-    //     ProductModel.deleteOne( { _id: req.params._id } )
-    //     .then(deleteResp => {
-    //         res.redirect('/products')
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //         res.redirect('/products')
-    //     })
-    // },
+    deleteCustomer: (req, res) => {
+        CustomerModel.deleteOne( { _id: req.params._id } )
+        .then(deleteResp => {
+            res.redirect('/customers')
+        })
+        .catch(err => {
+            console.log(err)
+            res.redirect('/customers')
+        })
+    },
 }

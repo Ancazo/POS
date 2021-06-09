@@ -10,7 +10,7 @@ const session = require('express-session')
 const salesController = require('./controllers/sales-controller')
 const salesRouter = require('./routers/sales-router')
 const productsRouter = require('./routers/products-router')
-// const customersRouter = require('./routers/customers-router')
+const customersRouter = require('./routers/customers-router')
 const userController = require('./controllers/user_controller')
 
 const {
@@ -50,7 +50,7 @@ app.use ('/sales', salesRouter)
 
 app.use ('/products', productsRouter)
 
-// app.use ('/customers', customersRouter)
+app.use ('/customers', customersRouter)
 
 // users
 
