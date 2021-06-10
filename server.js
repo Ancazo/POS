@@ -7,7 +7,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose')
 const session = require('express-session')
-const salesController = require('./controllers/sales-controller')
+// const salesController = require('./controllers/sales-controller')
 const salesRouter = require('./routers/sales-router')
 const productsRouter = require('./routers/products-router')
 const customersRouter = require('./routers/customers-router')
@@ -27,7 +27,6 @@ mongoose.set('useFindAndModify', false)
 mongoose.set('useCreateIndex', true)
 
 app.set('view engine', 'ejs')
-// app.set('views', './views')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
