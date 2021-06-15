@@ -44,6 +44,9 @@ app.use(session({ //setup express session as middleware. this is needed for logi
 // =======================================
 //              ROUTES
 // =======================================
+app.get('/', (req, res) => {
+  res.redirect('/user/login')
+})
 
 app.use ('/sales', salesRouter)
 
